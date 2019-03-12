@@ -2,37 +2,22 @@ server:
   port: 8888
 
 spring:
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: git@github.com:szattila98/config-repo.git
-          ignoreLocalSshSettings: true
-          privateKey: |
-                        -----BEGIN RSA PRIVATE KEY-----
-                        MIIEowIBAAKCAQEA2SuKCBLdYqZBpdSHc+A28R1zF7i2t0LkOrD6uMvrmT3122H0
-                        +LkL0d26TQD8vd49uYcIhJBixp/nylf5+2ZPxc7hJgBcjCbLYJV9ZrC+lHD5rekA
-                        6tJc53G0KaFiILB4X3R7pO8eMAZCkeyys4i7noviiJbdySMMwT03uYt00m4rpR1/
-                        ndxHyhJWeA5uOZJlM9pXzk4qnNNKuo6aSM/znpmITD8NQAGEL5WNnZTeaSoi8c/V
-                        374VXgs8UbBiK3lk58BR18wNzrtPlEA8ReW+QnvpF45V6TJi9jGl/hvxvgiDBlfK
-                        575ysYOKw9MxhhOxgaEPZWof9jt4jjr1Qm03zwIDAQABAoIBAQCXsCGpogOgdCBG
-                        hDxYY7P8lmVdnFeDieWAWT3G9iiJ0Q15PuKtGBN5czY9swLWW/UhMYBxl6hmtCpi
-                        2zBwuPXfZLE+qeH6wt4riD8fCzUS2haLssRBQM5DmtgMe/zeeGSbx/DVM3ASe0zk
-                        QEBRxp/GDk8cuMQRSboO/4N8xjvC/oaohH4hdusR6ITAUqEiBvVtffToV1f+fjPd
-                        5tAlKs5U5RIHJ1FohW2zb8ot43aTE0ejSysqIhW+aP6G0paOpIL1PvVuDXS3ggzD
-                        L2s+vZoFy6xj1yU/8Ir2nB8bCrdtqhoTRKHW5hKIdNKLi8Jr3AByqoWqdHjJVksb
-                        mF8SSfIBAoGBAP0FIM1f1HvlrbAI5DQ5F0vceGYvdHAEyIlJk5vvdvipte5eZSCX
-                        M2WX7yDb3PeA3IXoRgLxWZJ2T0AowwYBEcSDJlFVAWaFpUUvcdksARd33REXnOSq
-                        NTWQzGV0jrBeN/UTDzZpJOFRrz1r3FDt7lp3e1P/BpW8bEzeQP/o+kf/AoGBANu6
-                        UjOBpgPbVfA0g8mAH1dTVkxRNBnbS7RPRssZk7+iMPZK8mTUs4Jmzvjk5ZnUS1EI
-                        XATroleYMcG7IUXJ+UorgMxzYpLbQdyNF9u6ujB7IY+GO00ldHtK3rue4eONnpTx
-                        xQReV9Ze+5yH2GBT+LXlIZHDqLByGMmEpiVt+pAxAoGAaVUAMd9qIuYb54PcFM2L
-                        oD45NTkePSAQp+6kb69CFQT5wzEy4l1vvSSCHWjKVZMkuu5WbxUwl+N+3JPblJ1P
-                        W0LJ6eP8gES059d3itRh4/Y3Zs0wuJUPL6yHGtlqKYwfuXvkwl8FRnPuAyDrCBn1
-                        N140TmSFxkI5x8pivuargtsCgYAqG1+LTUoSLSMf4ABtSec3pdnA0ELqvZKZYCPR
-                        4fnlXGCDokMnPXeVAryhB8RUIVG5mp9/teQrYxgN5x1uMVFbfFC3XVlDiU7qxAMR
-                        cYwipEX/KhsNIqNayTM7wyvInqgIJPi7aJTumM8g5Qt7Ejx0Jw+yzkryXTsQyyHH
-                        xHai0QKBgH89LaEuqhI9VhJgLZv2NSJdgkTPDgSPTAI95nrnPNRL8ZDZiz2jqNSp
-                        Jca/qFWBfRpqwHJHu9NFJAsnyPnPIri9FvVjsWO2EOJhc5VJVDZdMTlxvpTFD+SS
-                        peSLz0CjLizlnJIuX2JQ6BilTQnK+GAV7ku2zQ2rc2XcpCf1aQr0
-                        -----END RSA PRIVATE KEY-----
+        native:
+          searchLocations: classpath:client-configs/
+
+# === Git private repo config storage - not needed but it was cool
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: git repo
+#          ignoreLocalSshSettings: true
+#          privateKey: |
+#                        -----BEGIN RSA PRIVATE KEY-----
+#                        -----END RSA PRIVATE KEY-----

@@ -3,6 +3,7 @@ target/
 
 ## IntelliJ IDEA ##
 .idea
+.idea/
 **/*.pyc
 **/*.iml
 *.iws

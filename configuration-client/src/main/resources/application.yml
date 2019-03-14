@@ -1,3 +1,5 @@
+# TODO Includes refresh endpoint, maybe it can be moved to config server
+# TODO or changed to bus refresh
 management:
   endpoints:
     web:

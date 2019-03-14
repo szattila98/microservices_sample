@@ -3,7 +3,7 @@ package ren.practice;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +14,13 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * A client which registers into the eureka discovery service.
+ * Swagger2 is enabled so it will generate REST-API docs.
+ * Add 'instance2' to active profiles to start another instance, there is an yml for it in the config-repo.
+ */
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableSwagger2
 public class EmployeeApplication {
     public static void main(String[] args) {
@@ -33,8 +38,10 @@ public class EmployeeApplication {
     }
 }
 
-//@RefreshScope bus apival vagy actuatorral majd
-//TODO default values from config server
+/**
+ * This controller gives back a name and a role from the respective property yml.
+ */
+//TODO @RefreshScope with bus-api or actuator or else
 @RestController
 class EmployeeController {
 

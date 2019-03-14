@@ -6,5 +6,5 @@ Used tutorials and articles:
   - https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
   - https://spring.io/blog/2015/07/14/microservices-with-spring
 
-For generating javadoc: mvn javadoc:jar
+For generating javadoc: mvn javadoc:jar <Br>
 For swagger-ui in employee serivce: $host:$port/swagger-ui.html

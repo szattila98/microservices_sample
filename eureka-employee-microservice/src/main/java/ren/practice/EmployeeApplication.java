@@ -38,14 +38,14 @@ public class EmployeeApplication {
 @RestController
 class EmployeeController {
 
-    @Value("empName:Jani")
+    @Value("${emp.empName:defaultName}")
     private String empName;
-    @Value("empRole:Admin")
+    @Value("${emp.empRole:defaultRole}")
     private String empRole;
 
     @GetMapping("/employee")
     public String getEmployee() {
-        return empName + empRole;
+        return "Name: " + empName + " || Role: " + empRole;
     }
 
 }

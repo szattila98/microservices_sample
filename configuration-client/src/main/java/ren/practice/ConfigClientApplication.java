@@ -7,6 +7,9 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * A client who will fetch a basic property yml form the config server, and read a message out of it.
+ */
 @SpringBootApplication
 public class ConfigClientApplication {
 
@@ -15,6 +18,10 @@ public class ConfigClientApplication {
     }
 }
 
+/**
+ * Controller which reads the message from the property file.
+ * RefreshScope annotation re-fetches the property file when there is a post request on actuator/refresh.
+ */
 @RefreshScope
 @RestController
 class MessageRestController {

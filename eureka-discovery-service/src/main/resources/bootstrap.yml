@@ -1,0 +1,8 @@
+# Name of the application so the discovery service knows which property file to fetch and the config servers uri.
+# Eureka fetches its property like any other client.
+spring:
+  application:
+    name: eureka-discovery-service
+  cloud:
+    config:
+      uri: http://localhost:8888

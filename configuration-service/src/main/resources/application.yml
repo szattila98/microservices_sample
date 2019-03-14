@@ -1,23 +1,52 @@
+# Port of the config server.
 server:
   port: 8888
 
+# git repository where the properties of the clients reside.
+# dont get any bad ideas cheeky person, this rsa key only grants pull access.
 spring:
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          searchLocations: classpath:client-configs/
+        git:
+          uri: git@github.com:szattila98/config-repo.git
+          ignoreLocalSshSettings: true
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEpAIBAAKCAQEAq3S5BkyYTbTsDtbAwrD+SNKCGHlfWEeAKanZowafF8/Uqrzi
+            39XcMoTvi3hh29OYEm0CsR6k9BaotkuNfYj421G63wrszbpyt9wtq0RH+HMTeSMU
+            b1Ap7Egn9dQ3U5Sdu8lyGiCPtuqC5JnJIHGLMOc671RKfmcAI4h8AS6sv+HhSAoq
+            8JHvtXSmhmoN+LPMsQBc/hURmhv40jFQEynTjwQrB76dvvrMvIjhCLWV5KdGzaoC
+            Op/hmmEP8IEVUFQuqVqXsHf0F9cXNpTN6Lsazb4muL163r6VaDNEfFWAUhwb+Hg5
+            8EKS2tAgAzOlq9V+IZCPE+ZTzyCL1Vu1OVui4QIDAQABAoIBAC85eBjvEegdVAOG
+            TROS8ocWTDT3gTZsgzV2jfZkRX+mg9n/KrIiUoMrsFsG7lVBA5rXoa0tVpvQfemw
+            B6mzB3BJI6J5fN3xY9WWdJG+veAFujBcZC2As/tbqH4CVLbVsVhe1OmzXEIyd5kF
+            bqtb+s2ectImsln8fsJKvnUI6RX0aroIUXjuoor7AymXm3UE5XKsHocSngMHb5MY
+            bIqBztyPk2phJHA0WMc6yAG+XhhIFT/lg3nbtsyEhe1yv1wQEi5HwjGys8okTLAE
+            +XsU1F0kfNV2FUewyZ2FD06bafsF/CpSib2LyXYSwWKBubkxqI6kvx82AfanXs1q
+            WczHSAECgYEA2iy78EuMVymR7kbQ0GY0vjH9TSPI3Q44v9OkIlY+EUbx3S/RMXeH
+            R3dHYGfH46K3oIHRbpcT6f3o5/0rXS9ioGOeoztCbmP5cNz1s5OkLAtbuHUyeb4m
+            6H7L2ADoIKqC2Fy/O2eu+6WvJ6c6zda4kYP1ITVKBeQ6YVUjypcIrMECgYEAyS53
+            Amxn16IzRYy5So3akROITKJclZXAfxawd/8BGP/dUf/bLFsRbHU9bcmVRgoVsUYB
+            oOEt3896Q0s9XxUUzxCuF6MTRAcc9fpLa/ah/tP1STw56kiDkzzl9VfynqjGuqJA
+            JfG29ecqw3E+WJQDEu5l3e/Ifj2W/tK91aDu3iECgYBxN4+bpgjA3pCc/uCzlKZA
+            IL7avfwpQo0OdqyRKQHyg0dVyc+cBPQNkQdYLuLa7QCvaU6ePgYWgi3P3WAYblOW
+            +btD56eUk4rJF9DlDHPAa3CAa0jzRkr4kXwErovHD9TwpEiUcjyq2BLp1+07Dfcf
+            hEO7pOSx4/qrsbvuEKxuwQKBgQCOgnObK9+DSEq5ga3fugyRqBxs7LZY3/O0EwZ+
+            egz1AIpug6dmDDyTb5lMI/ex3YLwSH7uz5QHbplVAf8/U1eiNlacN9B15/QD6oFy
+            wQqP0OV4M0lzRFqv+fuLh/k9mqDro/N87XSFTHNmbtmTNYXX6zgNtsV3Z3mGmRIQ
+            Oif7AQKBgQDX7Od0QChWSKdn+FdSin91qV2IZ/1kC7bI9smPzDF/jEvEbHkjrnf7
+            7l7+GK2w1zMnNMY+tnsLPApnYfbQWZuZqfxVXb8qnsuDfhJrcnvGNVXVfc3pXle8
+            N+pgQqjLIodVQriZ5N8NGA8zHGk/ihtzrRH0OAcUAiD9KaSIta+muA==
+            -----END RSA PRIVATE KEY-----
 
-# === Git private repo config storage - not needed but it was cool
+# refresh doesnt work on native, i think because the yml file in the builded jar doesnt change
 #spring:
+#  profiles:
+#    active: native
 #  cloud:
 #    config:
 #      server:
-#        git:
-#          uri: git repo
-#          ignoreLocalSshSettings: true
-#          privateKey: |
-#                        -----BEGIN RSA PRIVATE KEY-----
-#                        -----END RSA PRIVATE KEY-----
+#        native:
+#          searchLocations: classpath:client-configs/
+#

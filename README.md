@@ -7,3 +7,4 @@ Used tutorials and articles:
   - https://spring.io/blog/2015/07/14/microservices-with-spring
 
 For generating javadoc: mvn javadoc:jar
+For swagger-ui in employee serivce: $host:$port/swagger-ui.html

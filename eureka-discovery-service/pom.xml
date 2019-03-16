@@ -13,8 +13,6 @@
     <artifactId>eureka-discovery-service</artifactId>
 
     <name>eureka-discovery-service</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +20,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
+    <!--TODO try w/o version tags-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

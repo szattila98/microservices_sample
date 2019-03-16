@@ -1,12 +1,9 @@
 package ren.practice;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -38,21 +35,3 @@ public class EmployeeApplication {
     }
 }
 
-/**
- * This controller gives back a name and a role from the respective property yml.
- */
-//TODO @RefreshScope with bus-api or actuator or else
-@RestController
-class EmployeeController {
-
-    @Value("${emp.empName:defaultName}")
-    private String empName;
-    @Value("${emp.empRole:defaultRole}")
-    private String empRole;
-
-    @GetMapping("/employee")
-    public String getEmployee() {
-        return "Name: " + empName + " || Role: " + empRole;
-    }
-
-}

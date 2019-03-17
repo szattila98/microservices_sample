@@ -7,7 +7,10 @@ Used tutorials and articles:
   - https://spring.io/blog/2015/07/14/microservices-with-spring
 
 For generating javadoc: mvn javadoc:jar <Br>
-For swagger-ui in employee serivce: $host:$port/swagger-ui.html
-For good packaging: mvn clean install spring-boot:repackage
-    - after packaging jars can be independently ran (although it will need some testing)
-                    
+For swagger-ui in employee serivce: $host:$port/swagger-ui.html <br>
+For good packaging: mvn clean install spring-boot:repackage <br>
+    - after packaging jars can be independently ran (although it will need some testing) <br>
+    - run them with: java -jar yourApplication.jar <br>
+    - you can run another instance of a microservice <br>
+        if there is a property yml for it in the config repo <br>
+        with: java -jar -Dspring.profiles.active=instanceName yourApplication.jar <br>                

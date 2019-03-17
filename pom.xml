@@ -31,7 +31,7 @@
     </properties>
 
     <build>
-        <!--tells maven how to package this or something-->
+        <!--tells maven how to package the modules or something-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -82,7 +82,7 @@
 
                 <!--uber-jar-->
                 <!--flag main classes-->
-                <!--sets spring dependency version numbers straght-->
+                <!--sets spring dependency version numbers straight-->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>

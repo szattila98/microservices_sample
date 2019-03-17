@@ -8,3 +8,5 @@ Used tutorials and articles:
 
 For generating javadoc: mvn javadoc:jar <Br>
 For swagger-ui in employee serivce: $host:$port/swagger-ui.html
+For good packageing: mvn clean install spring-boot:repackage
+                    

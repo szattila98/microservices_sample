@@ -16,9 +16,9 @@ public class Employee {
     @Id
     @GeneratedValue
     private Long id;
-    @GeneratedValue //TODO foregn key
+    @NotNull
     private Long organizationId;
-    @GeneratedValue //TODO foregn key
+    @NotNull
     private Long departmentId;
     @NotNull
     private String name;

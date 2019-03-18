@@ -8,10 +8,14 @@ Used tutorials and articles:
 
 For generating javadoc: mvn javadoc:jar <Br>
 For swagger-ui in employee serivce: $host:$port/swagger-ui.html <br>
+Run projects from terminal with mvn: mvnw -DskipTests spring-boot:run <br>
+You can run another instance of a microservice if there is a property yml for it in the config repo <br>
+        with: mvnw -DskipTests -Dspring.profiles.active=instanceName spring-boot:run <br>
+
+**If you change packaging to jar from war** <br>
 For good packaging: mvn clean install spring-boot:repackage <br>
-    - after packaging jars can be independently ran (although it will need some testing) <br>
+    - after packaging jars can be independently ran (well at least I hope) <br>
     - run jars with: java -jar yourApplication.jar <br>
-    - run from terminal with mvnw: mvnw -DskipTests spring-boot:run <br>
     - you can run another instance of a microservice <br>
         if there is a property yml for it in the config repo <br>
         with: java -jar -Dspring.profiles.active=instanceName yourApplication.jar <br>                

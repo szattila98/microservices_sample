@@ -16,7 +16,7 @@
 
     <name>configuration-client</name>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>

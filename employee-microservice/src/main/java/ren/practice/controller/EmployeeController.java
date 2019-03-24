@@ -3,10 +3,7 @@ package ren.practice.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ren.practice.model.Employee;
 import ren.practice.repository.EmployeeRepository;
 
@@ -28,7 +25,7 @@ class EmployeeController {
     }
 
     @PostMapping
-    public Employee add(Employee employee) {
+    public Employee add(@RequestBody Employee employee) {
         LOGGER.info("Employee add: {}", employee);
         return repository.save(employee);
     }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ren.practice.model.Employee;
 import ren.practice.repository.EmployeeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,25 +34,33 @@ class EmployeeController {
     @GetMapping("/{id}")
     public Employee findById(@PathVariable("id") Long id) {
         LOGGER.info("Employee find: id={}", id);
-        return repository.getOne(id);
+        if (repository.findById(id).isPresent())
+            return repository.findById(id).get();
+        else return new Employee(null,null,"error",1,"error");
     }
 
     @GetMapping
     public List<Employee> findAll() {
         LOGGER.info("Employee find");
-        return repository.findAll();
+        List<Employee> employees = new ArrayList<>();
+        repository.findAll().forEach(employee -> employees.add(employee));
+        return employees;
     }
 
     @GetMapping("/department/{departmentId}")
     public List findByDepartment(@PathVariable("departmentId") Long departmentId) {
         LOGGER.info("Employee find: departmentId={}", departmentId);
-        return repository.findAll().stream().filter(a -> a.getDepartmentId().equals(departmentId)).collect(Collectors.toList());
+        List<Employee> employees = new ArrayList<>();
+        repository.findAll().forEach(employee -> employees.add(employee));
+        return employees.stream().filter(a -> a.getDepartmentId().equals(departmentId)).collect(Collectors.toList());
     }
 
     @GetMapping("/organization/{organizationId}")
     public List findByOrganization(@PathVariable("organizationId") Long organizationId) {
         LOGGER.info("Employee find: organizationId={}", organizationId);
-        return repository.findAll().stream().filter(a -> a.getOrganizationId().equals(organizationId)).collect(Collectors.toList());
+        List<Employee> employees = new ArrayList<>();;
+        repository.findAll().forEach(employee -> employees.add(employee));
+        return employees.stream().filter(a -> a.getOrganizationId().equals(organizationId)).collect(Collectors.toList());
     }
 
 }

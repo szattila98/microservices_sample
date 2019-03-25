@@ -10,10 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>employee-microservice</artifactId>
+    <artifactId>organization-microservice</artifactId>
 
-    <name>employee-microservice</name>
-
+    <name>organization-microservice</name>
     <packaging>jar</packaging>
 
     <properties>

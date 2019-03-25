@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
  * This is the controller of the Employee microservice.
  */
 @RestController
+@RequestMapping("/service")
 class EmployeeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeController.class);

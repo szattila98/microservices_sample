@@ -20,7 +20,6 @@
     <start-class>ren.practice.DepartmentApplication</start-class>
   </properties>
 
-  <!--TODO try w/o version tags-->
   <dependencies>
     <!--Basics-->
     <dependency>
@@ -56,11 +55,6 @@
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
       <version>2.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.195</version>
     </dependency>
     <!--Testing-->
     <dependency>

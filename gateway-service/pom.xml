@@ -10,24 +10,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>employee-microservice</artifactId>
+    <artifactId>gateway-service</artifactId>
 
-    <name>employee-microservice</name>
+    <name>gateway-service</name>
 
     <packaging>jar</packaging>
 
     <properties>
         <java.version>1.8</java.version>
         <!-- The main class to start by executing java -jar -->
-        <start-class>ren.practice.EmployeeApplication</start-class>
+        <start-class>ren.practice.GatewayServiceApplication</start-class>
     </properties>
 
     <dependencies>
-        <!--Basics-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!--CLOUD AND NETFLIX-->
         <dependency><!--this is the dependency you are looking for, w/o it, clients wont register-->
             <groupId>org.springframework.cloud</groupId>
@@ -36,6 +31,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <dependency><!--for correlating logs between microservices-->
             <groupId>org.springframework.cloud</groupId>
@@ -85,7 +84,6 @@
 
     <build>
         <plugins>
-            <!--tells maven how to package the modules or something-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

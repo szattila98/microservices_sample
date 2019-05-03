@@ -12,6 +12,7 @@
         <module>employee-microservice</module>
         <module>department-microservice</module>
         <module>organization-microservice</module>
+        <module>gateway-service</module>
     </modules>
 
 </project>

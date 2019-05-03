@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ren.practice.client.EmployeeClient;
 import ren.practice.model.Department;
 import ren.practice.repository.DepartmentRepository;
 
@@ -15,12 +16,12 @@ public class DepartmentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
     private DepartmentRepository repository;
-//    private EmployeeClient employeeClient;
+    private EmployeeClient employeeClient;
 
     @Autowired
-    public DepartmentController(DepartmentRepository repository/*, EmployeeClient employeeClient*/) {
+    public DepartmentController(DepartmentRepository repository, EmployeeClient employeeClient) {
         this.repository = repository;
-//        this.employeeClient = employeeClient;
+        this.employeeClient = employeeClient;
     }
 
 
@@ -48,12 +49,12 @@ public class DepartmentController {
         return repository.findByOrganization(organizationId);
     }
 
-//    @GetMapping("/organization/{organizationId}/with-employees")
-//    public List<Department> findByOrganizationWithEmployees(@PathVariable("organizationId") Long organizationId) {
-//        LOGGER.info("Department find: organizationId={}", organizationId);
-//        List<Department> departments = repository.findByOrganization(organizationId);
-//        departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));
-//        return departments;
-//    }
+    @GetMapping("/organization/{organizationId}/with-employees")
+    public List<Department> findByOrganizationWithEmployees(@PathVariable("organizationId") Long organizationId) {
+        LOGGER.info("Department find: organizationId={}", organizationId);
+        List<Department> departments = repository.findByOrganization(organizationId);
+        departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));
+        return departments;
+    }
 
 }

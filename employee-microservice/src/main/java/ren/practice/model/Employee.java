@@ -1,32 +1,19 @@
 package ren.practice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 /**
- * This is the base model class for this microservice.
+ * Employee model class.
  */
-@Entity
-@Table(name = "employees")
 public class Employee {
-    //TODO add more intricate data typed fields
-    @Id
-    @GeneratedValue
+
     private Long id;
-    @NotNull
     private Long organizationId;
-    @NotNull
     private Long departmentId;
-    @NotNull
     private String name;
     private int age;
-    @NotNull
     private String position;
 
     public Employee() {
+
     }
 
     public Employee(Long organizationId, Long departmentId, String name, int age, String position) {
@@ -90,4 +77,5 @@ public class Employee {
         return "Employee [id=" + id + ", organizationId=" + organizationId + ", departmentId=" + departmentId
                 + ", name=" + name + ", position=" + position + "]";
     }
+
 }

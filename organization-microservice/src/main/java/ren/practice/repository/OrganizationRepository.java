@@ -1,18 +1,40 @@
 package ren.practice.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import ren.practice.model.Organization;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-public interface OrganizationRepository extends CrudRepository<Organization, Long> {
+@Repository
+public class OrganizationRepository {
 
-    @Override
-    <S extends Organization> S save(S s);
+    private List<Organization> organizations = new ArrayList<>();
 
-    @Override
-    Optional<Organization> findById(Long aLong);
+    @PostConstruct
+    public void init() {
+        this.add(new Organization("Microsoft", "Redmond, Washington, USA"));
+        this.add(new Organization("Oracle", "Redwood City, California, USA"));
+    }
 
-    @Override
-    Iterable<Organization> findAll();
+    public Organization add(Organization organization) {
+        organization.setId((long) (organizations.size() + 1));
+        organizations.add(organization);
+        return organization;
+    }
+
+    public Organization findById(Long id) {
+        Optional<Organization> organization = organizations.stream().filter(a -> a.getId().equals(id)).findFirst();
+        if (organization.isPresent())
+            return organization.get();
+        else
+            return null;
+    }
+
+    public List<Organization> findAll() {
+        return organizations;
+    }
+
 }

@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import ren.practice.model.Employee;
+import ren.practice.repository.EmployeeRepository;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * A client which registers into the eureka discovery service.
  * Swagger2 is enabled so it will generate REST-API docs.
- * Add 'instance2' to active profiles to start another instance, there is an yml for it in the config-repo.
+ * Add 'instance2' to active profiles to start another instance, there is an property file for it in the config-repo.
  */
 @SpringBootApplication
 @EnableEurekaClient

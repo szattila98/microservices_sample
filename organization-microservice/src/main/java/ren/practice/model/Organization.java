@@ -1,26 +1,15 @@
 package ren.practice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "organizations")
 public class Organization {
 
-    @GeneratedValue
-    @Id
     private Long id;
-    @NotNull
     private String name;
-    @NotNull
     private String address;
-//    @NotNull
-//    private List<Department> departments;
-//    @NotNull
-//    private List<Employee> employees;
+    private List<Department> departments = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     public Organization() {
 
@@ -55,21 +44,21 @@ public class Organization {
         this.address = address;
     }
 
-//    public List<Department> getDepartments() {
-//        return departments;
-//    }
-//
-//    public void setDepartments(List<Department> departments) {
-//        this.departments = departments;
-//    }
-//
-//    public List<Employee> getEmployees() {
-//        return employees;
-//    }
-//
-//    public void setEmployees(List<Employee> employees) {
-//        this.employees = employees;
-//    }
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     @Override
     public String toString() {

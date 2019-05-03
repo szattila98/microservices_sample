@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.*;
 import ren.practice.model.Organization;
 import ren.practice.repository.OrganizationRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/service")
 public class OrganizationController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrganizationController.class);
 
     private OrganizationRepository repository;
+//    DepartmentClient departmentClient;
+//    EmployeeClient employeeClient;
 
     @Autowired
     public OrganizationController(OrganizationRepository repository) {
@@ -26,23 +26,19 @@ public class OrganizationController {
     @PostMapping
     public Organization add(@RequestBody Organization organization) {
         LOGGER.info("Organization add: {}", organization);
-        return repository.save(organization);
+        return repository.add(organization);
     }
 
     @GetMapping
     public List<Organization> findAll() {
         LOGGER.info("Organization find");
-        ArrayList<Organization> organizations = new ArrayList<>();
-        repository.findAll().forEach(a -> organizations.add(a));
-        return organizations;
+        return repository.findAll();
     }
 
     @GetMapping("/{id}")
     public Organization findById(@PathVariable("id") Long id) {
         LOGGER.info("Organization find: id={}", id);
-        if (repository.findById(id).isPresent())
-            return repository.findById(id).get();
-        else return new Organization(null, "error");
+        return repository.findById(id);
     }
 
 //    @GetMapping("/{id}/with-departments")
@@ -68,4 +64,5 @@ public class OrganizationController {
 //        organization.setEmployees(employeeClient.findByOrganization(organization.getId()));
 //        return organization;
 //    }
+
 }

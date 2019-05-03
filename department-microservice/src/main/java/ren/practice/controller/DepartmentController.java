@@ -7,51 +7,45 @@ import org.springframework.web.bind.annotation.*;
 import ren.practice.model.Department;
 import ren.practice.repository.DepartmentRepository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/service")
 public class DepartmentController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
     private DepartmentRepository repository;
+//    private EmployeeClient employeeClient;
 
     @Autowired
-    public DepartmentController(DepartmentRepository repository) {
+    public DepartmentController(DepartmentRepository repository/*, EmployeeClient employeeClient*/) {
         this.repository = repository;
+//        this.employeeClient = employeeClient;
     }
+
 
     @PostMapping("/")
     public Department add(@RequestBody Department department) {
         LOGGER.info("Department add: {}", department);
-        return repository.save(department);
+        return repository.add(department);
     }
 
     @GetMapping("/{id}")
     public Department findById(@PathVariable("id") Long id) {
         LOGGER.info("Department find: id={}", id);
-        if (repository.findById(id).isPresent())
-            return repository.findById(id).get();
-        else return new Department(null, "error");
+        return repository.findById(id);
     }
 
     @GetMapping("/")
     public List<Department> findAll() {
         LOGGER.info("Department find");
-        ArrayList<Department> departments = new ArrayList<>();
-        repository.findAll().forEach(a -> departments.add(a));
-        return departments;
+        return repository.findAll();
     }
 
     @GetMapping("/organization/{organizationId}")
     public List<Department> findByOrganization(@PathVariable("organizationId") Long organizationId) {
         LOGGER.info("Department find: organizationId={}", organizationId);
-        ArrayList<Department> departments = new ArrayList<>();
-        repository.findAll().forEach(a -> departments.add(a));
-        return departments.stream().filter(a -> a.getOrganizationId().equals(organizationId)).collect(Collectors.toList());
+        return repository.findByOrganization(organizationId);
     }
 
 //    @GetMapping("/organization/{organizationId}/with-employees")
@@ -61,4 +55,5 @@ public class DepartmentController {
 //        departments.forEach(d -> d.setEmployees(employeeClient.findByDepartment(d.getId())));
 //        return departments;
 //    }
+
 }

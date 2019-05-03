@@ -1,29 +1,60 @@
 package ren.practice.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 import ren.practice.model.Employee;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
- * This is the repository for employees.
- * It configured to connect to a MariaDb database.
+ * This is the repository for employee microservice.
  */
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+public class EmployeeRepository {
 
-    @Override
-    <S extends Employee> S save(S s);
+    private List<Employee> employees = new ArrayList<>();
 
-    @Override
-    Optional<Employee> findById(Long aLong);
+    @PostConstruct
+    public void init(){
+        this.add(new Employee(1L, 1L, "John Smith", 34, "Analyst"));
+        this.add(new Employee(1L, 1L, "Darren Hamilton", 37, "Manager"));
+        this.add(new Employee(1L, 1L, "Tom Scott", 26, "Developer"));
+        this.add(new Employee(1L, 2L, "Anna London", 39, "Analyst"));
+        this.add(new Employee(1L, 2L, "Patrick Dempsey", 27, "Developer"));
+        this.add(new Employee(2L, 3L, "Kevin Price", 38, "Developer"));
+        this.add(new Employee(2L, 3L, "Ian Scott", 34, "Developer"));
+        this.add(new Employee(2L, 3L, "Andrew Campton", 30, "Manager"));
+        this.add(new Employee(2L, 4L, "Steve Franklin", 25, "Developer"));
+        this.add(new Employee(2L, 4L, "Elisabeth Smith", 30, "Developer"));
+    }
 
-    @Override
-    Iterable<Employee> findAll();
+    public Employee add(Employee employee) {
+        employee.setId((long) (employees.size()+1));
+        employees.add(employee);
+        return employee;
+    }
+
+    public Employee findById(Long id) {
+        Optional<Employee> employee = employees.stream().filter(a -> a.getId().equals(id)).findFirst();
+        if (employee.isPresent())
+            return employee.get();
+        else
+            return null;
+    }
+
+    public List<Employee> findAll() {
+        return employees;
+    }
+
+    public List<Employee> findByDepartment(Long departmentId) {
+        return employees.stream().filter(a -> a.getDepartmentId().equals(departmentId)).collect(Collectors.toList());
+    }
+
+    public List<Employee> findByOrganization(Long organizationId) {
+        return employees.stream().filter(a -> a.getOrganizationId().equals(organizationId)).collect(Collectors.toList());
+    }
+
 }

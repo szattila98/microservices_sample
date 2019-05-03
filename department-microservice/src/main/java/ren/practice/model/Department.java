@@ -1,22 +1,14 @@
 package ren.practice.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "departments")
 public class Department {
 
-    @Id
-    @GeneratedValue
     private Long id;
-    @NotNull
     private Long organizationId;
-    @NotNull
     private String name;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 
     public Department() {
 

@@ -9,11 +9,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Repository where departments are stored.
+ *
+ * @author Szőke Attila
+ */
 @Repository
 public class DepartmentRepository {
 
     private List<Department> departments = new ArrayList<>();
 
+    /**
+     * Inits departments.
+     */
     @PostConstruct
     public void init() {
         this.add(new Department(1L, "Development"));
@@ -22,12 +30,24 @@ public class DepartmentRepository {
         this.add(new Department(2L, "Operations"));
     }
 
+    /**
+     * Add department.
+     *
+     * @param department the department
+     * @return the department
+     */
     public Department add(Department department) {
         department.setId((long) (departments.size() + 1));
         departments.add(department);
         return department;
     }
 
+    /**
+     * Find by id of department.
+     *
+     * @param id the id
+     * @return the department
+     */
     public Department findById(Long id) {
         Optional<Department> department = departments.stream().filter(a -> a.getId().equals(id)).findFirst();
         if (department.isPresent())
@@ -36,10 +56,21 @@ public class DepartmentRepository {
             return null;
     }
 
+    /**
+     * Find all departments.
+     *
+     * @return the list
+     */
     public List<Department> findAll() {
         return departments;
     }
 
+    /**
+     * Find departments by organization list.
+     *
+     * @param organizationId the organization id
+     * @return the list
+     */
     public List<Department> findByOrganization(Long organizationId) {
         return departments.stream().filter(a -> a.getOrganizationId().equals(organizationId)).collect(Collectors.toList());
     }

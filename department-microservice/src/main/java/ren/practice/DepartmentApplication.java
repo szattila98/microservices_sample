@@ -12,16 +12,31 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * The Department microservice.
+ *
+ * @author Szőke Attila
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @EnableSwagger2
 @EnableFeignClients
 public class DepartmentApplication {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(DepartmentApplication.class, args);
     }
 
+    /**
+     * Swagger api docket.
+     *
+     * @return the docket
+     */
     @Bean
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2)

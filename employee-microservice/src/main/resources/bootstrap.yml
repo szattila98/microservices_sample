@@ -1,4 +1,4 @@
-# Name of the application so the client knows which property file to fetch and the config servers uri.
+# Name of the service, by which it finds its property file and the uri of the config server to fetch from.
 spring:
   application:
     name: employee-service

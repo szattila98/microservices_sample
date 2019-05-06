@@ -5,16 +5,17 @@ Used tutorials and articles:
   - https://spring.io/guides/gs/centralized-configuration/
   - https://spring.io/blog/2015/01/20/microservice-registration-and-discovery-with-spring-cloud-and-netflix-s-eureka
   - https://spring.io/blog/2015/07/14/microservices-with-spring
+  - https://dzone.com/articles/quick-guide-to-microservices-with-spring-boot-20-e
 
 For generating javadoc: mvn javadoc:jar <Br>
-For swagger-ui in employee serivce: $host:$port/swagger-ui.html <br>
+For swagger-ui in individual serivces: $host:$port/swagger-ui.html <br>
 Run projects from terminal with mvn: mvnw -DskipTests spring-boot:run <br>
 You can run another instance of a microservice if there is a property yml for it in the config repo <br>
         with: mvnw -DskipTests -Dspring.profiles.active=instanceName spring-boot:run <br>
 
 **If you change packaging to jar from war** <br>
 For good packaging: mvn clean install spring-boot:repackage <br>
-    - after packaging jars can be independently ran (well at least I hope) <br>
+    - after packaging jars can be independently ran <br>
     - run jars with: java -jar yourApplication.jar <br>
     - you can run another instance of a microservice <br>
         if there is a property yml for it in the config repo <br>

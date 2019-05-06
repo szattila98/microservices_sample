@@ -40,7 +40,7 @@ spring:
             N+pgQqjLIodVQriZ5N8NGA8zHGk/ihtzrRH0OAcUAiD9KaSIta+muA==
             -----END RSA PRIVATE KEY-----
 
-# refresh doesnt work on native, i think because the yml file in the builded jar doesnt change
+# refresh doesnt work on native, I think because the yml file in the built jar doesnt change.
 #spring:
 #  profiles:
 #    active: native
@@ -49,4 +49,4 @@ spring:
 #      server:
 #        native:
 #          searchLocations: classpath:client-configs/
-#
+

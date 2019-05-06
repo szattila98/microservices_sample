@@ -14,7 +14,9 @@ import ren.practice.model.Employee;
 import ren.practice.repository.EmployeeRepository;
 
 /**
- * Controller of the Employee microservice.
+ * Controller of the employee service with some simple endpoints.
+ *
+ * @author Attila Szőke
  */
 @RestController
 public class EmployeeController {
@@ -23,35 +25,69 @@ public class EmployeeController {
 
     private EmployeeRepository repository;
 
+    /**
+     * Instantiates a new Employee controller.
+     *
+     * @param repository the repository
+     */
     @Autowired
     public EmployeeController(EmployeeRepository repository) {
         this.repository = repository;
     }
 
+    /**
+     * Add an employee.
+     *
+     * @param employee the employee
+     * @return the employee
+     */
     @PostMapping("/")
     public Employee add(@RequestBody Employee employee) {
         LOGGER.info("Employee add: {}", employee);
         return repository.add(employee);
     }
 
+    /**
+     * Find employee by employee id.
+     *
+     * @param id the id
+     * @return the employee
+     */
     @GetMapping("/{id}")
     public Employee findById(@PathVariable("id") Long id) {
         LOGGER.info("Employee find: id={}", id);
         return repository.findById(id);
     }
 
+    /**
+     * Find all employees.
+     *
+     * @return the list
+     */
     @GetMapping("/")
     public List<Employee> findAll() {
         LOGGER.info("Employee find");
         return repository.findAll();
     }
 
+    /**
+     * Find employees by department.
+     *
+     * @param departmentId the department id
+     * @return the list
+     */
     @GetMapping("/department/{departmentId}")
     public List<Employee> findByDepartment(@PathVariable("departmentId") Long departmentId) {
         LOGGER.info("Employee find: departmentId={}", departmentId);
         return repository.findByDepartment(departmentId);
     }
 
+    /**
+     * Find employees by organization.
+     *
+     * @param organizationId the organization id
+     * @return the list
+     */
     @GetMapping("/organization/{organizationId}")
     public List<Employee> findByOrganization(@PathVariable("organizationId") Long organizationId) {
         LOGGER.info("Employee find: organizationId={}", organizationId);

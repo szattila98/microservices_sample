@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 /**
  * This is the repository for employee microservice.
+ *
+ * @author Szőke Attila
  */
 @Repository
 public class EmployeeRepository {

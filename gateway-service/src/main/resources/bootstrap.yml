@@ -1,3 +1,5 @@
+# Name of the service, by which it finds its property file and the uri of the config server to fetch from.
+# Gateway fetches its property file like any other client.
 spring:
   application:
     name: gateway-service

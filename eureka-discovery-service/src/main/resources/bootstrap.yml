@@ -1,5 +1,5 @@
-# Name of the application so the discovery service knows which property file to fetch and the config servers uri.
-# Eureka fetches its property like any other client.
+# Name of the service, by which it finds its property file and the uri of the config server to fetch from.
+# Eureka fetches its property file like any other client.
 spring:
   application:
     name: eureka-discovery-service

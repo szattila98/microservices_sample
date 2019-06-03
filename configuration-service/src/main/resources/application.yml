@@ -10,6 +10,7 @@ spring:
       server:
         git:
           uri: git@github.com:szattila98/config-repo.git
+          search-paths: microservicePractice
           ignoreLocalSshSettings: true
           privateKey: |
             -----BEGIN RSA PRIVATE KEY-----
